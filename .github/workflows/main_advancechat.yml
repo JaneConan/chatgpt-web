@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v1
       with:
         registry: https://index.docker.io/v1/
-        username: ${{ secrets.AzureAppService_ContainerUsername_7e6ed0829f1c453b8cf34151f01c951e }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_c047c9a28c414d7997e4a9dac090b737 }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_ff39965ac8984585a2589fc42defad1d }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_6b411c3f05e84748ba84d3a047acbda4 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_7e6ed0829f1c453b8cf34151f01c951e }}/janeconan/chatgpt-web:${{ github.sha }}
+        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_ff39965ac8984585a2589fc42defad1d }}/janeconan/chatgpt-web:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'advancechat'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_1eb4f24573a54783b82a404e5d6ff443 }}
-        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_7e6ed0829f1c453b8cf34151f01c951e }}/janeconan/chatgpt-web:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_1a4ea036684e4381ae9162b0bd95bcc4 }}
+        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_ff39965ac8984585a2589fc42defad1d }}/janeconan/chatgpt-web:${{ github.sha }}'
